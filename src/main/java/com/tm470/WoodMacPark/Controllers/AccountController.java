@@ -44,6 +44,22 @@ public class AccountController {
         return accountNameRepository.findByName(username);
     }
 
+    @RequestMapping(value = "/name/{username}", method = RequestMethod.PUT)
+    public Account updateByName(@PathVariable String username, @RequestBody Account account)
+    {
+        Account existingAccount = accountNameRepository.findByName(username);
+        BeanUtils.copyProperties(account, existingAccount);
+        return accountNameRepository.saveAndFlush(existingAccount);
+    }
+
+    @RequestMapping(value = "/name/{username}", method = RequestMethod.DELETE)
+    public Account deleteByName(@PathVariable String username, @RequestBody Account account)
+    {
+        Account existingAccount = accountNameRepository.findByName(username);
+        accountNameRepository.delete(existingAccount);
+        return existingAccount;
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public Account update(@PathVariable int id, @RequestBody Account account)
     {
