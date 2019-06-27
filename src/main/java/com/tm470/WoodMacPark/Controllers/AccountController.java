@@ -1,7 +1,8 @@
 package com.tm470.WoodMacPark.Controllers;
 
 import com.tm470.WoodMacPark.Models.Account;
-import com.tm470.WoodMacPark.Repositories.AccountRepository;
+import com.tm470.WoodMacPark.Repositories.AccountNameRepository;
+import com.tm470.WoodMacPark.Repositories.AccountIdRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,10 @@ import java.util.List;
 public class AccountController {
 
     @Autowired
-    private AccountRepository accountRepository;
+    private AccountIdRepository accountRepository;
+
+    @Autowired
+    private AccountNameRepository accountNameRepository;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Account> list() {
@@ -29,9 +33,15 @@ public class AccountController {
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Account get(@PathVariable int id)
+    public Account getById(@PathVariable int id)
     {
         return accountRepository.findById(id).orElse(null);
+    }
+
+    @RequestMapping(value = "/name/{username}", method = RequestMethod.GET)
+    public Account getByName(@PathVariable String username)
+    {
+        return accountNameRepository.findByName(username);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
