@@ -1,15 +1,24 @@
 package com.tm470.WoodMacPark.Models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Users")
 public class Account {
 
     @Id
+    @Column(name = "iduser", nullable = false, unique = true)
     private int idUser;
+
+    @Column(name="username")
     private String username;
+
+    @Column(name="password")
     private String password;
+
 
     public Account() {}
 
