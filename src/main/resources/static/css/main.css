@@ -1,0 +1,41 @@
+h1 {
+    color : #f00;
+}
+
+#title {
+    font-size: 350%;
+    float: top;
+    margin-left:35%;
+    font-family: algerian, courier;
+}
+
+#footnote {
+    float: bottom;
+    margin-left:43%;
+}
+
+#logo {
+    float:top;
+    margin-left:35%;
+}
+
+.loginButtons {
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left:43%;
+    height:50px;
+    width:120px;
+}
+
+.button {
+    background: #666666;
+    padding: 6px;
+    border: 2px solid #000000;
+    color: #ffffff;
+    font-weight: bold;
+}

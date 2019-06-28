@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="main.css" th:href="@{css/main.css}"/>
 </head>
 <body>
-<p th:text=" 'Hello ' + ${username}">Hello World.</p>
+
+<p id="title">WoodMac Parking</p>
+<p>Hello <span th:text="${model.username}">username</span>, and welcome to the application.</p>
 <br>
-<p>Goodbye</p>
+<a th:href="@{/profile(id=${model.id}, trial=1)}" href="profile.html?id=userId">View my profile</a>
+
+<p id="footnote">
+    <br />
+    Copright &copy; - Michal Dobiezynski   2019
+</p>
 </body>
+
 </html>

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Space {
 
     @Id
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id")
     private int id;
 
     @Column(name="Booked", nullable = false)

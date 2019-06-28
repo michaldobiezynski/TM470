@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="main.css" th:href="@{css/main.css}"/>
+</head>
+<body>
+
+<p id="title">WoodMac Parking</p>
+
+<form>
+    <div class="newUserBox">
+
+        <div class="fieldSection">
+            <div class="fieldTitle">Login name &amp; Password</div>
+
+            <input type="text" name="username" id="username" placeholder="username" required="required"/>
+            <input type="password" name="pass1" id="pass1" placeholder="password" required="required"/>
+            <input type="password" name="pass2" id="pass2" placeholder="repeat password" required="required"/>
+        </div>
+
+        <div class="fieldSection">
+            <div class="fieldTitle">Name</div>
+
+
+            <input type="text" name="firstname" id="firstname" placeholder="First name" required="required" />
+            <input type="text" name="secondname" id="secondname" placeholder="Second name" required="required" />
+
+        </div>
+
+
+
+
+        <input type="submit" value="Submit" class="button" />
+    </div>
+</form>
+
+<p id="footnote">
+    <br />
+    Copright &copy; - Michal Dobiezynski   2019
+</p>
+</body>
+
+</html>
