@@ -25,11 +25,11 @@ public class AccountController {
     }
 
 
-//    @RequestMapping(value = "/new", method = RequestMethod.POST)
-//    public Account create(@RequestBody Account account)
-//    {
-//        return accountRepository.saveAndFlush(account);
-//    }
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    public Account create(@RequestBody Account account)
+    {
+        return accountRepository.saveAndFlush(account);
+    }
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

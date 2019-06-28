@@ -6,6 +6,8 @@
 </head>
 <body th:with="fullname=${model.title} + ' ' + ${model.firstName} + ' ' + ${#strings.toUpperCase(model.surname)}">
 
+
+
         <div th:replace="fragments/menu :: main-menu" >main menu goes here</div>
 
 
