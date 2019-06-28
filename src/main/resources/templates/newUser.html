@@ -52,7 +52,8 @@
             <br />
             <select id="country" name="country" required="required" th:field="*{country}">
                 <option value="country" selected="selected" disabled="disabled">Country</option>
-                <option th:each="country : ${addUserModel.countries}" th:text="${country.value}" th:value="${country.key}" value="XXX">Country Name</option>
+                <option th:each="country : ${addUserModel.countries}" th:text="${country.value}"
+                        th:value="${country.key}" value="XXX">Country Name</option>
             </select>
         </div>
 

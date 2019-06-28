@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="main.css" th:href="@{css/main.css}"/>
+</head>
+<body>
+
+<p id="title">WoodMac Parking</p>
+
+<form>
+    <div class="Box">
+
+        <div class="fieldSection">
+            <h2 id="cuh2">Create parking space</h2>
+            <br>
+            <br>
+
+            <select id="booked" name="booked" required="required" th:field="${space.booked}">
+                <option value=false selected="selected" disabled="disabled">Booked?</option>
+                <option value=true>Yes</option>
+                <option value=false>No</option>
+
+            </select>
+
+            <select id="accounts" name="accounts" th:field="${space.userId}">
+                <option value=0 selected="selected" disabled="disabled">Username</option>
+                <option th:each="account : ${allAcc}" th:text="${account.username}"
+                        th:value="${account.idUser}" value="XXX">user</option>
+            </select>
+            
+
+        </div>
+
+    </div>
+
+</form>
+
+<p id="footnote">
+    <br />
+    Copright &copy; - Michal Dobiezynski   2019
+</p>
+</body>
+
+</html>

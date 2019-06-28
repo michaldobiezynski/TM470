@@ -1,9 +1,13 @@
 package com.tm470.WoodMacPark.Models;
 
+import com.tm470.WoodMacPark.Repositories.AccountIdRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "Users")
@@ -28,6 +32,8 @@ public class Account {
         this.username = username;
         this.password = password;
     }
+
+
 
     public int getIdUser() {
         return idUser;

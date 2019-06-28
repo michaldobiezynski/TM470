@@ -1,8 +1,13 @@
 package com.tm470.WoodMacPark.Controllers;
 
+import com.tm470.WoodMacPark.Models.Account;
 import com.tm470.WoodMacPark.Models.AddUserModel;
 import com.tm470.WoodMacPark.Models.AddUserModelValidator;
+import com.tm470.WoodMacPark.Models.Space;
+import com.tm470.WoodMacPark.Repositories.AccountIdRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +19,9 @@ import java.util.*;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    private AccountIdRepository accountIdRepository;
 
     @RequestMapping("/home")
     public ModelAndView home() {
@@ -30,11 +38,27 @@ public class HomeController {
     }
 
 //put this back in account controller class
-    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    @RequestMapping(value = "/new")
     public String create()
     {
         return "createAccount";
     }
+
+
+
+    //put this back in space controller class
+    @RequestMapping(value = "/newS", method=RequestMethod.GET)
+    public String createS(Model model, Space space)
+    {
+
+        List<Account> allAcc =  accountIdRepository.findAll();
+
+        model.addAttribute("allAcc", allAcc);
+
+        return "createSpace";
+    }
+
+
 
     @RequestMapping("/profile")
     public ModelAndView viewProfile() {
@@ -60,6 +84,7 @@ public class HomeController {
 
     @RequestMapping("/addUser")
     public ModelAndView addUser() {
+
         return new ModelAndView("newUser", "addUserModel", new AddUserModel());
     }
 
