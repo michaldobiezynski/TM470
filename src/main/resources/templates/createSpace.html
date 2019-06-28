@@ -10,24 +10,31 @@
 <form>
     <div class="Box">
 
-        <div class="fieldSection">
-            <h2 id="cuh2">Create parking space</h2>
+        <div class="fieldSection2">
+            <h2 id="cuh2">Create a parking space</h2>
+            <br>
+                <p> Fixed?</p>
+                <select id="fixed" name="fixed" required="required" th:field="${space.fixed}">
+                    <option value=false selected="selected" disabled="disabled">Fixed?</option>
+                    <option value=true>Yes</option>
+                    <option value=false>No</option>
+                </select>
+                <br>
+                <br>
+                <p>For who?</p>
+                <select id="accounts" name="accounts" th:field="${space.userId}">
+                    <option value=0 selected="selected" >No one</option>
+                    <option th:each="account : ${allAcc}" th:text="${account.username}"
+                            th:value="${account.idUser}" value="XXX">user</option>
+                </select>
             <br>
             <br>
-
-            <select id="booked" name="booked" required="required" th:field="${space.booked}">
-                <option value=false selected="selected" disabled="disabled">Booked?</option>
-                <option value=true>Yes</option>
-                <option value=false>No</option>
-
-            </select>
-
-            <select id="accounts" name="accounts" th:field="${space.userId}">
-                <option value=0 selected="selected" disabled="disabled">Username</option>
-                <option th:each="account : ${allAcc}" th:text="${account.username}"
-                        th:value="${account.idUser}" value="XXX">user</option>
-            </select>
-            
+            <br>
+            <br>
+            <input type="submit" value="Submit" class="button2" />
+            <br>
+            <br>
+            <input type="submit" value="Main menu" class="button2" />
 
         </div>
 
