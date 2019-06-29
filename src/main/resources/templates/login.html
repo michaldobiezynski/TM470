@@ -8,17 +8,26 @@
 <body>
 <img id="logo" src="logo.png" th:src="@{images/logo.png}"/>
 
-    <br>
-    <button class="loginButtons">Login</button>
-    <br>
-    <br>
-    <br>
-    <button class="loginButtons">Help</button>
-    <br>
-    <br>
-    <br>
-    <button class="loginButtons">Exit</button>
+<form th:action="@{/login}" method="POST">
 
+    <input type="username" id="userLogin" name="username"  th:placeholder="Username"
+            required="required"/>
+    <br>
+    <input type="password"  th:placeholder="Password"
+           id="userPassword" name="password"
+           required="required"/>
+    <br>
+    <br>
+    <input type="submit" value="Login" class="loginButtons" />
+    <br>
+    <br>
+    <br>
+    <input type="button" value="Help" class="loginButtons" />
+    <br>
+    <br>
+    <br>
+    <input type="button" value="Exit" class="loginButtons" />
 
+</form>
 </body>
 </html>
