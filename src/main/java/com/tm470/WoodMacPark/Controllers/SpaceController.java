@@ -8,6 +8,8 @@ import com.tm470.WoodMacPark.Repositories.SpaceRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -40,9 +42,15 @@ public class SpaceController {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public Space create(@RequestBody Space space)
+    public ModelAndView create(@ModelAttribute Space space,
+                               RedirectAttributes redirectAttributes)
     {
-        return spaceRepository.saveAndFlush(space);
+       spaceRepository.saveAndFlush(space);
+
+       redirectAttributes.addFlashAttribute("message", "Space successfully created.");
+
+       return new ModelAndView("redirect:/newS", "space",
+               new Space());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

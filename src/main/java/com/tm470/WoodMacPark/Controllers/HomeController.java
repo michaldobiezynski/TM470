@@ -48,14 +48,14 @@ public class HomeController {
 
     //put this back in space controller class
     @RequestMapping(value = "/newS", method=RequestMethod.GET)
-    public String createS(Model model, Space space)
+    public ModelAndView createS(Model model)
     {
 
         List<Account> allAcc =  accountIdRepository.findAll();
 
         model.addAttribute("allAcc", allAcc);
 
-        return "createSpace";
+        return new ModelAndView("createSpace","space",new Space());
     }
 
 

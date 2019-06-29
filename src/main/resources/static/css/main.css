@@ -54,7 +54,12 @@ h1 {
     width:80px;
 }
 #cuh2 {
-    margin-left:-5%;
+     margin-left:-5%;
+     font-family: algerian, courier;
+ }
+
+#cuh {
+    margin-left:-40%;
     font-family: algerian, courier;
 }
 
@@ -118,6 +123,13 @@ h1 {
 }
 
 #newAccMsg {
+    font-family: algerian, courier;
+    font: bold;
+    color: red;
+    margin-left:-15%;
+}
+
+#newSpaceMsg {
     font-family: algerian, courier;
     font: bold;
     color: red;

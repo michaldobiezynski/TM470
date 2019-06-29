@@ -31,7 +31,8 @@ public class AccountController {
     public ModelAndView create(@ModelAttribute Account account,
                                RedirectAttributes redirectAttributes)
     {
-         accountRepository.saveAndFlush(account);
+        accountRepository.saveAndFlush(account);
+
         redirectAttributes.addFlashAttribute("message", "Account successfully created.");
 
         return new ModelAndView("redirect:/new", "account",

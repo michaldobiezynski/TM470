@@ -22,12 +22,13 @@
 
 <p id="title">WoodMac Parking</p>
 
-<form>
+<form action="/spaces/new" method="POST" th:object="${space}">
     <div class="Box">
 
         <div class="fieldSection2">
-            <h2 id="cuh2">Create a parking space</h2>
+            <h2 id="cuh">Create a parking space</h2>
             <br>
+            <p id="newSpaceMsg" th:text="${message}"></p>
                 <p> Fixed?</p>
                 <select id="fixed" name="fixed" required="required" th:field="${space.fixed}">
                     <option value=false selected="selected" disabled="disabled">Fixed?</option>
@@ -49,7 +50,7 @@
             <input type="submit" value="Submit" class="button2" />
             <br>
             <br>
-            <input type="submit" value="Main menu" class="button2" />
+            <input type="button" value="Main menu" class="button2" />
 
         </div>
 
