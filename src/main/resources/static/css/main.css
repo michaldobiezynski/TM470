@@ -116,3 +116,10 @@ h1 {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+#newAccMsg {
+    font-family: algerian, courier;
+    font: bold;
+    color: red;
+    margin-left:-15%;
+}

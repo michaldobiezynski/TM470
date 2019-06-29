@@ -23,17 +23,28 @@ public class Account {
     @Column(name="password")
     private String password;
 
+    @Column(name="firstname")
+    private String firstname;
+
+    @Column(name="secondname")
+    private String secondname;
+
+    @Column(name="email")
+    private String email;
 
     public Account() {}
 
-    public Account(int idUser, String username, String password) {
 
+    public Account(int idUser, String username, String password,
+                   String firstname, String secondname, String email)
+    {
         this.idUser = idUser;
         this.username = username;
         this.password = password;
+        this.firstname = firstname;
+        this.secondname = secondname;
+        this.email = email;
     }
-
-
 
     public int getIdUser() {
         return idUser;
@@ -59,4 +70,27 @@ public class Account {
         this.password = password;
     }
 
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getSecondname() {
+        return secondname;
+    }
+
+    public void setSecondname(String secondname) {
+        this.secondname = secondname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

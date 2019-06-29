@@ -6,6 +6,8 @@ import com.tm470.WoodMacPark.Repositories.AccountIdRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -26,9 +28,14 @@ public class AccountController {
 
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public Account create(@RequestBody Account account)
+    public ModelAndView create(@ModelAttribute Account account,
+                               RedirectAttributes redirectAttributes)
     {
-        return accountRepository.saveAndFlush(account);
+         accountRepository.saveAndFlush(account);
+        redirectAttributes.addFlashAttribute("message", "Account successfully created.");
+
+        return new ModelAndView("redirect:/new", "account",
+                new Account());
     }
 
 

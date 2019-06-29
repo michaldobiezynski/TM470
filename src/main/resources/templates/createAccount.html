@@ -8,40 +8,46 @@
 <div class="sidenav">
     <br>
     <br>
-    <a href="#">Profile</a>
+    <li><a th:href="@{/basics}">Profile</a></li>
     <br>
-    <a href="#">Bookings</a>
+    <li><a th:href="@{/basics}">Bookings</a></li>
     <br>
-    <a href="#">Map</a>
+    <li><a th:href="@{/basics}">Map</a></li>
     <br>
-    <a href="#">Help</a>
+    <li><a th:href="@{/basics}">Help</a></li>
     <br>
-    <a href="#">Logout</a>
+    <li><a th:href="@{/basics}">Logout</a></li>
     <br>
 </div>
 
 <p id="title">WoodMac Parking</p>
 
-<form action="/accounts/new" method="post" th:object="">
+<form action="/accounts/new" method="POST" th:object="${account}">
     <div class="newUserBox">
 
         <div class="fieldSection">
             <h2 id="cuh2">Create account</h2>
             <br>
+            <p id="newAccMsg" th:text="${message}"></p>
             <br>
-            <input type="text" name="username" id="username" placeholder="Username" required="required"/>
-            <br>
-            <br>
-            <input type="text" name="pass1" id="pass1" placeholder="Password" required="required"/>
-            <br>
-            <br>
-            <input type="text" name="firstname" id="firstname" placeholder="First name" required="required" />
+            <input type="text" name="username" id="username" placeholder="Username" required="required"
+                   th:field="*{username}" />
             <br>
             <br>
-            <input type="text" name="secondname" id="secondname" placeholder="Second name" required="required" />
+            <input type="text" name="pass1" id="pass1" placeholder="Password" required="required"
+                   th:field="*{password}" />
             <br>
             <br>
-            <input type="text" name="email" id="email" placeholder="Email address" required="required" />
+            <input type="text" name="firstname" id="firstname" placeholder="First name" required="required"
+                   th:field="*{firstname}"/>
+            <br>
+            <br>
+            <input type="text" name="secondname" id="secondname" placeholder="Second name" required="required"
+                   th:field="*{secondname}" />
+            <br>
+            <br>
+            <input type="text" name="email" id="email" placeholder="Email address" required="required"
+                   th:field="*{email}"/>
             <br>
             <br>
             <br>
@@ -49,7 +55,7 @@
             <input type="submit" value="Submit" class="button" />
             <br>
             <br>
-            <input type="submit" value="Main menu" class="button" />
+            <input type="button" value="Main menu" class="button" />
 
         </div>
 

@@ -39,9 +39,9 @@ public class HomeController {
 
 //put this back in account controller class
     @RequestMapping(value = "/new")
-    public String create()
+    public ModelAndView create()
     {
-        return "createAccount";
+        return new ModelAndView("createAccount","account", new Account());
     }
 
 
