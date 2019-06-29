@@ -32,11 +32,15 @@ public class Account {
     @Column(name="email")
     private String email;
 
+    @Column(name="role")
+    private String role;
+
     public Account() {}
 
 
     public Account(int idUser, String username, String password,
-                   String firstname, String secondname, String email)
+                   String firstname, String secondname, String email,
+                    String role)
     {
         this.idUser = idUser;
         this.username = username;
@@ -44,6 +48,7 @@ public class Account {
         this.firstname = firstname;
         this.secondname = secondname;
         this.email = email;
+        this.role = role;
     }
 
     public int getIdUser() {
@@ -52,6 +57,14 @@ public class Account {
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getUsername() {
