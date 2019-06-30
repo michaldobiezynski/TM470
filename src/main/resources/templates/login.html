@@ -8,15 +8,19 @@
 <body>
 <img id="logo" src="logo.png" th:src="@{images/logo.png}"/>
 
-<form th:action="@{/login}" method="POST">
+<form name="f" th:action="@{/login}" method="POST">
 
     <input type="username" id="userLogin" name="username"  th:placeholder="Username"
             required="required"/>
+    <br>
     <br>
     <input type="password"  th:placeholder="Password"
            id="userPassword" name="password"
            required="required"/>
     <br>
+    <div th:if="${param.error}" class="alert alert-error">
+        Invalid username and password.
+    </div>
     <br>
     <input type="submit" value="Login" class="loginButtons" />
     <br>

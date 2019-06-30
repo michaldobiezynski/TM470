@@ -23,7 +23,7 @@ public class HomeController {
     @Autowired
     private AccountIdRepository accountIdRepository;
 
-    @RequestMapping("/home")
+    @RequestMapping(value = {"/", "/home"})
     public ModelAndView home() {
         Map<String, Object> model = new HashMap<String,Object>();
         model.put("username", "Michal");
@@ -32,7 +32,7 @@ public class HomeController {
 
     }
 
-    @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/login"}, method = RequestMethod.GET)
     public String login() {
         return "login";
     }
