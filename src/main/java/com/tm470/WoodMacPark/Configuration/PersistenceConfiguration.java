@@ -17,7 +17,7 @@ public class PersistenceConfiguration {
     public DataSource dataSource()
     {
         return DataSourceBuilder.create().build();
-    }//end of primary data source method
+    }
 
 
 }
