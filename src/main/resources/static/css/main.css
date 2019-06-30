@@ -145,6 +145,25 @@ h1 {
 }
 
 #welcomeMsg {
-    margin-left:37%;
+    margin-left:35%;
     font-family: algerian, courier;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-family: algerian, courier;
+}
+
+th, td {
+    padding: 15px;
+}
+
+#accountListT {
+    margin-left:31%;
+}
+
+caption {
+    font-size: 40px;
+    color: #818181;
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head>
+        <link rel="stylesheet" href="main.css" th:href="@{css/main.css}"/>
+    </head>
+</head>
+<body>
+
+<div class="sidenav">
+    <br>
+    <br>
+    <li><a th:href="@{/basics}">Profile</a></li>
+    <br>
+    <li><a th:href="@{/basics}">Bookings</a></li>
+    <br>
+    <li><a th:href="@{/basics}">Map</a></li>
+    <br>
+    <li><a th:href="@{/basics}">Help</a></li>
+    <br>
+    <li><a th:href="@{/basics}">Logout</a></li>
+    <br>
+</div>
+
+<p id="title">WoodMac Parking</p>
+
+<div>
+    <table id="accountListT" class="table table-hover">
+        <caption>List of all accounts</caption>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Firstname</th>
+            <th>Secondname</th>
+            <th>Email</th>
+        </tr>
+        <tr th:each="account: ${allAcc}">
+            <td th:text="${account.idUser} ">1</td>
+            <td th:text="${account.username} ">1</td>
+            <td th:text="${account.firstname} ">1</td>
+            <td th:text="${account.secondname} ">1</td>
+            <td th:text="${account.email} ">1</td>
+        </tr>
+    </table>
+</div>
+
+
+<p id="footnote">
+    <br />
+    Copright &copy; - Michal Dobiezynski   2019
+</p>
+
+</body>
+</html>
