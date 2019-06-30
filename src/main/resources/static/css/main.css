@@ -143,3 +143,8 @@ h1 {
 #userPassword {
     margin-left:43%;
 }
+
+#welcomeMsg {
+    margin-left:37%;
+    font-family: algerian, courier;
+}

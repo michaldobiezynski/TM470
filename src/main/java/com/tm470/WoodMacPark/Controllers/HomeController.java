@@ -27,7 +27,7 @@ public class HomeController {
     public ModelAndView home() {
         Map<String, Object> model = new HashMap<String,Object>();
         model.put("username", "Michal");
-        model.put("id", 173);
+        model.put("id", 2);
         return new ModelAndView("homepage", "model", model);
 
     }
@@ -56,6 +56,18 @@ public class HomeController {
         model.addAttribute("allAcc", allAcc);
 
         return new ModelAndView("createSpace","space",new Space());
+    }
+
+    //put this back in space controller class
+    @RequestMapping(value = "/ListAcc", method=RequestMethod.GET)
+    public String ListAcc(Model model)
+    {
+
+        List<Account> allAcc =  accountIdRepository.findAll();
+
+        model.addAttribute("allAcc", allAcc);
+
+        return ("listAccounts");
     }
 
 
