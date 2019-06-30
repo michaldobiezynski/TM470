@@ -156,4 +156,13 @@ public class HomeController {
         return "userAdded";
     }
 
+
+    @RequestMapping(value = "/editProfile", method = RequestMethod.GET)
+    public String getById(Model model)
+    {
+         model.addAttribute("account", accountIdRepository.findById(2));
+
+         return "editProfile";
+    }
+
 }

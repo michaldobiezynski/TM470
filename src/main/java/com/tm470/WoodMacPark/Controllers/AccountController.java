@@ -39,6 +39,21 @@ public class AccountController {
                 new Account());
     }
 
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public ModelAndView updateProfile(@ModelAttribute Account account,
+                                 RedirectAttributes redirectAttributes)
+    {
+        Account existingAccount = accountNameRepository.findByName("michal");
+
+        BeanUtils.copyProperties(account, existingAccount);
+
+        accountNameRepository.saveAndFlush(existingAccount);
+
+        redirectAttributes.addFlashAttribute("message", "Account successfully updated.");
+
+        return new ModelAndView("redirect:/editProfile","account",existingAccount);
+    }
+
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Account getById(@PathVariable int id)
