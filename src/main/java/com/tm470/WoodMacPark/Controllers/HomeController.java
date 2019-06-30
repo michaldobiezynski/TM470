@@ -106,6 +106,17 @@ public class HomeController {
 
     }
 
+    @RequestMapping(value = "/FreeSpaces", method = RequestMethod.GET)
+    public String listFree(Model model) {
+
+        List<Space> allFreeSpc = spaceBookedRepository.findByBooked(false);
+
+        model.addAttribute("allFreeSpc", allFreeSpc);
+
+        return ("listFreeSpaces");
+
+    }
+
     @RequestMapping(value = "/ListFSpc", method = RequestMethod.GET)
     public String listFixed( Model model) {
 
@@ -117,7 +128,7 @@ public class HomeController {
 
     }
 
-    
+
 
     @RequestMapping("/addUser")
     public ModelAndView addUser() {
