@@ -5,10 +5,14 @@ import com.tm470.WoodMacPark.Models.AddUserModel;
 import com.tm470.WoodMacPark.Models.AddUserModelValidator;
 import com.tm470.WoodMacPark.Models.Space;
 import com.tm470.WoodMacPark.Repositories.AccountIdRepository;
+import com.tm470.WoodMacPark.Repositories.SpaceBookedRepository;
+import com.tm470.WoodMacPark.Repositories.SpaceFixedRepository;
+import com.tm470.WoodMacPark.Repositories.SpaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +26,16 @@ public class HomeController {
 
     @Autowired
     private AccountIdRepository accountIdRepository;
+
+    @Autowired
+    private SpaceRepository spaceRepository;
+
+    @Autowired
+    private SpaceBookedRepository spaceBookedRepository;
+
+    @Autowired
+    private SpaceFixedRepository spaceFixedRepository;
+
 
     @RequestMapping(value = {"/", "/home"})
     public ModelAndView home() {
@@ -68,6 +82,39 @@ public class HomeController {
         model.addAttribute("allAcc", allAcc);
 
         return ("listAccounts");
+    }
+
+    @RequestMapping(value = "/ListSpc", method = RequestMethod.GET)
+    public String ListSpc(Model model) {
+
+        List<Space> allSpc = spaceRepository.findAll();
+
+        model.addAttribute("allSpc", allSpc);
+
+        return ("listSpaces");
+
+    }
+
+    @RequestMapping(value = "/ListBSpc", method = RequestMethod.GET)
+    public String listBooked(Model model) {
+
+        List<Space> allBSpc = spaceBookedRepository.findByBooked(true);
+
+        model.addAttribute("allBSpc", allBSpc);
+
+        return ("listBookedSpaces");
+
+    }
+
+    @RequestMapping(value = "/ListFSpc", method = RequestMethod.GET)
+    public String listFixed( Model model) {
+
+        List<Space> allFSpc = spaceFixedRepository.findByFixed(true);
+
+        model.addAttribute("allFSpc", allFSpc);
+
+        return ("listFixedSpaces");
+
     }
 
 
