@@ -117,29 +117,7 @@ public class HomeController {
 
     }
 
-
-
-    @RequestMapping("/profile")
-    public ModelAndView viewProfile() {
-        Map<String, Object> model = new HashMap<String,Object>();
-        model.put("title","Mr");
-        model.put("firstName", "Michal");
-        model.put("surname", "Dobiezynski");
-        model.put("dateOfBirth", new GregorianCalendar(2006,3,9).getTime());
-        model.put("description", "a <string>fantastic</strong> Java Programmer");
-
-        List<String> languages = new ArrayList<String>();
-        languages.add("English");
-        languages.add("French");
-        languages.add("Spanish");
-        languages.add("Danish");
-
-        model.put("languages", languages);
-
-        model.put("color", "#ccc");
-
-        return new ModelAndView("profile", "model", model);
-    }
+    
 
     @RequestMapping("/addUser")
     public ModelAndView addUser() {
