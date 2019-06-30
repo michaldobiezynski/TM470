@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Controller
@@ -43,7 +44,6 @@ public class HomeController {
         model.put("username", "Michal");
         model.put("id", 2);
         return new ModelAndView("homepage", "model", model);
-
     }
 
     @RequestMapping(value={"/login"}, method = RequestMethod.GET)
@@ -152,6 +152,18 @@ public class HomeController {
          model.addAttribute("account", accountIdRepository.findById(2));
 
          return "editProfile";
+    }
+
+    @RequestMapping(value = {"/myBooking"})
+    public ModelAndView booking() {
+
+        Map<String, Object> model = new HashMap<String,Object>();
+
+        model.put("username", "Michal");
+        model.put("id", 2);
+        model.put("space", 2);
+
+        return new ModelAndView("bookingsPage", "model", model);
     }
 
 }

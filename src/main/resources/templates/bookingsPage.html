@@ -8,7 +8,7 @@
 <div class="sidenav">
     <br>
     <br>
-    <a th:href="@{/profile(id=${model.id})}" href="profile.html?id=userId">Profile</a>
+    <a th:href="@{/booking(id=${model.id})}" href="profile.html?id=userId">Profile</a>
     <br>
     <a href="#">Bookings</a>
     <br>
@@ -21,7 +21,9 @@
 </div>
 
 <p id="title">WoodMac Parking</p>
-<p id="welcomeMsg">Hello <span th:text="${model.booking.space}">username</span>, and welcome to the application.</p>
+
+<p id="bookingMsg"> You have booked a space with following ID: <span th:text="${model.space}">username</span>
+</p>
 <br>
 
 

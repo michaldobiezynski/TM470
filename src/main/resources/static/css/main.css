@@ -149,6 +149,11 @@ h1 {
     font-family: algerian, courier;
 }
 
+#bookingMsg {
+    margin-left:38%;
+    font-family: algerian, courier;
+}
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
