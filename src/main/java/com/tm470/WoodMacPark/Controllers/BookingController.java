@@ -37,7 +37,7 @@ public class BookingController {
     {
         bookingRepository.saveAndFlush(booking);
 
-        redirectAttributes.addFlashAttribute("message", "Space successfully created.");
+        redirectAttributes.addFlashAttribute("message", "Booking successfully created.");
 
         return new ModelAndView("redirect:/newB", "booking",
                 new Booking());

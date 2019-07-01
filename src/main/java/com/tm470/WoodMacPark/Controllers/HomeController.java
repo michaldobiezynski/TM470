@@ -1,13 +1,7 @@
 package com.tm470.WoodMacPark.Controllers;
 
-import com.tm470.WoodMacPark.Models.Account;
-import com.tm470.WoodMacPark.Models.AddUserModel;
-import com.tm470.WoodMacPark.Models.AddUserModelValidator;
-import com.tm470.WoodMacPark.Models.Space;
-import com.tm470.WoodMacPark.Repositories.AccountIdRepository;
-import com.tm470.WoodMacPark.Repositories.SpaceBookedRepository;
-import com.tm470.WoodMacPark.Repositories.SpaceFixedRepository;
-import com.tm470.WoodMacPark.Repositories.SpaceRepository;
+import com.tm470.WoodMacPark.Models.*;
+import com.tm470.WoodMacPark.Repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +30,9 @@ public class HomeController {
 
     @Autowired
     private SpaceFixedRepository spaceFixedRepository;
+
+    @Autowired
+    private BookingRepository bookingRepository;
 
 
     @RequestMapping(value = {"/", "/home"})
@@ -164,6 +161,33 @@ public class HomeController {
         model.put("space", 2);
 
         return new ModelAndView("bookingsPage", "model", model);
+    }
+
+
+    @RequestMapping(value = "/ListBookings", method = RequestMethod.GET)
+    public String listBookngs(Model model) {
+
+        List<Booking> allBookings = bookingRepository.findAll();
+
+        model.addAttribute("allBookings", allBookings);
+
+        return ("listBookings");
+
+    }
+
+    @RequestMapping(value = "/createBooking", method = RequestMethod.GET)
+    public ModelAndView createBooking(Model model)
+    {
+        model.addAttribute("account", accountIdRepository.findById(2));
+
+        List<Space> allFreeSpc = spaceBookedRepository.findByBooked(false);
+
+        model.addAttribute("allFreeSpc", allFreeSpc);
+
+
+
+        return new ModelAndView("createBooking",
+                "booking", new Booking());
     }
 
 }
