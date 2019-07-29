@@ -35,6 +35,7 @@ public class BookingController {
     public ModelAndView create(@ModelAttribute Booking booking,
                                RedirectAttributes redirectAttributes)
     {
+
         bookingRepository.saveAndFlush(booking);
 
         redirectAttributes.addFlashAttribute("message", "Booking successfully created.");

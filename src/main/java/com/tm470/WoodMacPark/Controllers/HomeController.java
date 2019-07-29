@@ -127,12 +127,6 @@ public class HomeController {
 
 
 
-    @RequestMapping("/addUser")
-    public ModelAndView addUser() {
-
-        return new ModelAndView("newUser", "addUserModel", new AddUserModel());
-    }
-
     @RequestMapping(value="/saveUser", method= RequestMethod.POST)
     public String saveUser(@Valid AddUserModel addUserModel, BindingResult bindingResult) {
         new AddUserModelValidator().validate(addUserModel, bindingResult);
@@ -178,12 +172,12 @@ public class HomeController {
     @RequestMapping(value = "/createBooking", method = RequestMethod.GET)
     public ModelAndView createBooking(Model model)
     {
-        model.addAttribute("account", accountIdRepository.findById(2));
+        model.addAttribute("username", "Michal");
+        model.addAttribute("id", 2);
 
         List<Space> allFreeSpc = spaceBookedRepository.findByBooked(false);
 
         model.addAttribute("allFreeSpc", allFreeSpc);
-
 
 
         return new ModelAndView("createBooking",

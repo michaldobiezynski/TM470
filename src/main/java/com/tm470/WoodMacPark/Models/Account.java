@@ -1,8 +1,5 @@
 package com.tm470.WoodMacPark.Models;
 
-import com.tm470.WoodMacPark.Repositories.AccountIdRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -32,6 +29,7 @@ public class Account {
 
     @Column(name="email")
     private String email;
+
 
 
     public Account() {}
