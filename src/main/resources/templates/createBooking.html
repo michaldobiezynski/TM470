@@ -30,6 +30,7 @@
             <h2 id="cb">Create a booking</h2>
             <br>
             <br>
+            <p id="bookingExistMsg" th:text="${message}"></p>
             <br>
             <p>Which space?</p>
             <select id="bookingSpace" name="bookingSpace" th:field="${booking.space}">

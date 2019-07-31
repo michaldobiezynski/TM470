@@ -36,16 +36,22 @@ public class BookingController {
                                RedirectAttributes redirectAttributes)
     {
 
-//        if(bookingRepository.findById(booking.getId()) != null) {
-//
-//        }
+        if(bookingRepository.findByUser(booking.getUser()) == null) {
 
-        bookingRepository.saveAndFlush(booking);
+            bookingRepository.saveAndFlush(booking);
 
-        redirectAttributes.addFlashAttribute("message", "Booking successfully created.");
+            redirectAttributes.addFlashAttribute("message", "Booking successfully created.");
 
-        return new ModelAndView("redirect:/myBooking", "booking",
-                new Booking());
+            return new ModelAndView("redirect:/myBooking", "booking",
+                    new Booking());
+        } else {
+
+            redirectAttributes.addFlashAttribute("message", "You already have a booking.");
+
+            return new ModelAndView("redirect:/createBooking", "booking",
+                    new Booking());
+        }
+
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
