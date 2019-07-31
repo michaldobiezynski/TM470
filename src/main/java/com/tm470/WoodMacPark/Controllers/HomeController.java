@@ -178,7 +178,7 @@ public class HomeController {
         List<Space> allFreeSpc = spaceBookedRepository.findByBooked(false);
 
         model.addAttribute("allFreeSpc", allFreeSpc);
-
+        
 
         return new ModelAndView("createBooking",
                 "booking", new Booking());

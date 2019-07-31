@@ -25,10 +25,10 @@
 <form action="/bookings/new" method="POST" th:object="${booking}">
     <div class="Box">
 
+
         <div class="fieldSection2">
             <h2 id="cb">Create a booking</h2>
             <br>
-            <p id="newSpaceMsg" th:text="${message}"></p>
             <br>
             <br>
             <p>Which space?</p>
@@ -39,6 +39,11 @@
             </select>
             <br>
             <br>
+            <select id="bookingSpaceUser" name="bookingSpaceUser" th:field="${booking.user}">
+                <option th:value="${id}" selected="selected" >User</option>
+                <option th:text="${id}"
+                        th:value="${id}" value="XXX">space</option>
+            </select>
             </p>
             <br>
             <br>
@@ -57,6 +62,9 @@
     <br />
     Copright &copy; - Michal Dobiezynski   2019
 </p>
+<script>
+    document.getElementById("bookingSpaceUser").style.display = "none";
+</script>
 </body>
 
 </html>

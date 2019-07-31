@@ -36,11 +36,15 @@ public class BookingController {
                                RedirectAttributes redirectAttributes)
     {
 
+//        if(bookingRepository.findById(booking.getId()) != null) {
+//
+//        }
+
         bookingRepository.saveAndFlush(booking);
 
         redirectAttributes.addFlashAttribute("message", "Booking successfully created.");
 
-        return new ModelAndView("redirect:/newB", "booking",
+        return new ModelAndView("redirect:/myBooking", "booking",
                 new Booking());
     }
 
