@@ -152,7 +152,26 @@ public class HomeController {
 
         model.put("username", "Michal");
         model.put("id", 2);
-        model.put("space", 2);
+
+        Booking booking = bookingRepository.findByUser(2);
+
+        if(booking != null) {
+
+            model.put("message", "You have booked a space with following ID: ");
+
+            int spaceId = booking.getSpace();
+
+            model.put("space", spaceId);
+
+        } else {
+
+            model.put("message", "You don't have a booking.");
+
+            model.put("space", null);
+
+        }
+
+
 
         return new ModelAndView("bookingsPage", "model", model);
     }

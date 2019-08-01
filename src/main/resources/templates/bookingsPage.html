@@ -22,15 +22,17 @@
 
 <p id="title">WoodMac Parking</p>
 
-<p id="bookingMsg"> You have booked a space with following ID: <span th:text="${model.space}">username</span>
+<p id="bookingMsg"> <span th:text="${model.message}"> message </span> <span th:text="${model.space}">username</span>
 </p>
 <br>
 
+<input type="submit" value="Delete booking" class="button3" />
 
 <p id="footnote">
     <br />
     Copright &copy; - Michal Dobiezynski   2019
 </p>
+
 </body>
 
 </html>

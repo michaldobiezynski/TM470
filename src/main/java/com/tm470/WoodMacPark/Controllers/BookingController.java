@@ -4,6 +4,7 @@ package com.tm470.WoodMacPark.Controllers;
 import com.tm470.WoodMacPark.Models.Booking;
 import com.tm470.WoodMacPark.Models.Space;
 import com.tm470.WoodMacPark.Repositories.BookingRepository;
+import com.tm470.WoodMacPark.Repositories.SpaceRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/bookings")
@@ -18,6 +20,9 @@ public class BookingController {
 
     @Autowired
     private BookingRepository bookingRepository;
+
+    @Autowired
+    private SpaceRepository spaceRepository;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Booking> list()
@@ -37,6 +42,14 @@ public class BookingController {
     {
 
         if(bookingRepository.findByUser(booking.getUser()) == null) {
+
+            int spaceId = booking.getSpace();
+
+            Space space = spaceRepository.findById(spaceId).orElse(null);
+
+            space.setBooked(true);
+
+            spaceRepository.saveAndFlush(space);
 
             bookingRepository.saveAndFlush(booking);
 
