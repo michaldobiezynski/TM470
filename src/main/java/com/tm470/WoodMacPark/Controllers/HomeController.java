@@ -172,7 +172,6 @@ public class HomeController {
         }
 
 
-
         return new ModelAndView("bookingsPage", "model", model);
     }
 

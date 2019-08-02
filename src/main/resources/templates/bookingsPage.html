@@ -2,8 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="main.css" th:href="@{css/main.css}"/>
+    <script>
+        function checkForm() {
+            var str = document.getElementById("bookingMsg");
+
+            if (str.innerText == "You don't have a booking.") {
+                document.getElementById("deleteButton").style.display = 'none';
+            }
+        }
+    </script>
 </head>
-<body>
+<body onload="checkForm()">
 
 <div class="sidenav">
     <br>
@@ -26,7 +35,7 @@
 </p>
 <br>
 
-<input type="submit" value="Delete booking" class="button3" />
+<input id="deleteButton" type="submit" value="Delete booking" class="button3" />
 
 <p id="footnote">
     <br />
