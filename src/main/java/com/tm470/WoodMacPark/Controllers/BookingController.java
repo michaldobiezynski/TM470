@@ -76,13 +76,6 @@ public class BookingController {
         return bookingRepository.saveAndFlush(existingBooking);
     }
 
-//    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-//    public ModelAndView delete(@PathVariable int id)
-//    {
-//        Booking existingBooking = bookingRepository.findById(id).orElse(null);
-//        bookingRepository.delete(existingBooking);
-//        return new ModelAndView("redirect:/myBooking", "null", null);
-//    }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public ModelAndView delete(@PathVariable int id,

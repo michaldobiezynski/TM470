@@ -6,9 +6,6 @@
         function checkForm() {
             var str = document.getElementById("bookingMsg");
 
-            document.getElementById("SpaceId").style.display = "none";
-            document.getElementById("bookingSpaceUser").style.display = "none";
-
             if (str.innerText == "You don't have a booking.") {
                 document.getElementById("deleteButton").style.display = 'none';
                 document.getElementById("bookingMsg2").style.display = 'none';
@@ -40,25 +37,14 @@
 
 <form th:action="@{/bookings/delete/{id}(id=${bookingId})}" th:method="delete">
 
-    <p id="bookingMsg"> <span th:text="${message}"> message </span> </p> <p id="bookingMsg2"> <span th:text="${space}">username</span>
-</p>
+    <p id="bookingMsg"> <span th:text="${message}"> message </span> </p>
+    <p id="bookingMsg2"> <span th:text="${space}">message</span> </p>
 <br>
 
 <input id="deleteButton" type="submit" value="Delete booking" class="button3" />
 
     <br>
     <br>
-<!--    <select id="SpaceId" name="SpaceId" th:field="${booking.space}">-->
-<!--        <option th:value="${space}" selected="selected" >Space</option>-->
-<!--        <option th:text="${space}"-->
-<!--                th:value="${space}" value="XXX">space</option>-->
-<!--    </select>-->
-
-<!--    <select id="bookingSpaceUser" name="bookingSpaceUser" th:field="${booking.user}">-->
-<!--        <option th:value="${id}" selected="selected" >User</option>-->
-<!--        <option th:text="${id}"-->
-<!--                th:value="${id}" value="XXX">space</option>-->
-<!--    </select>-->
 
 </form>
 

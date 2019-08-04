@@ -172,7 +172,6 @@ public class HomeController {
 
             model.addAttribute("space", 0);
 
-            model.addAttribute("booking", 0);
 
             model.addAttribute("message", "You don't have a booking.");
         }
