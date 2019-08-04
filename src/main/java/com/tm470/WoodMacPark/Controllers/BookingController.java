@@ -84,24 +84,22 @@ public class BookingController {
 //        return new ModelAndView("redirect:/myBooking", "null", null);
 //    }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public ModelAndView delete(@ModelAttribute Booking booking,
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public ModelAndView delete(@PathVariable int id,
                                RedirectAttributes redirectAttributes)
     {
         try {
-            if(bookingRepository.findByUser(booking.getUser()) != null) {
+            if(bookingRepository.findById(id) != null) {
 
-                int spaceId = booking.getSpace();
+                Booking bookingToDelete = bookingRepository.findById(id).orElse(null);
+
+                int spaceId = bookingToDelete.getSpace();
 
                 Space space = spaceRepository.findById(spaceId).orElse(null);
 
                 space.setBooked(false);
 
                 spaceRepository.saveAndFlush(space);
-
-                int bookingId = booking.getId();
-
-                Booking bookingToDelete = bookingRepository.findById(bookingId).orElse(null);
 
                 bookingRepository.delete(bookingToDelete);
 

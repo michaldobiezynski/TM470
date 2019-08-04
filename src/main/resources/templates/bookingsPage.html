@@ -38,7 +38,7 @@
 
 <p id="title">WoodMac Parking</p>
 
-<form action="/bookings/delete/{id}" method="DELETE" th:object="${booking}">
+<form th:action="@{/bookings/delete/{id}(id=${bookingId})}" th:method="delete">
 
     <p id="bookingMsg"> <span th:text="${message}"> message </span> </p> <p id="bookingMsg2"> <span th:text="${space}">username</span>
 </p>
@@ -48,17 +48,17 @@
 
     <br>
     <br>
-    <select id="SpaceId" name="SpaceId" th:field="${booking.space}">
-        <option th:value="${space}" selected="selected" >Space</option>
-        <option th:text="${space}"
-                th:value="${space}" value="XXX">space</option>
-    </select>
+<!--    <select id="SpaceId" name="SpaceId" th:field="${booking.space}">-->
+<!--        <option th:value="${space}" selected="selected" >Space</option>-->
+<!--        <option th:text="${space}"-->
+<!--                th:value="${space}" value="XXX">space</option>-->
+<!--    </select>-->
 
-    <select id="bookingSpaceUser" name="bookingSpaceUser" th:field="${booking.user}">
-        <option th:value="${id}" selected="selected" >User</option>
-        <option th:text="${id}"
-                th:value="${id}" value="XXX">space</option>
-    </select>
+<!--    <select id="bookingSpaceUser" name="bookingSpaceUser" th:field="${booking.user}">-->
+<!--        <option th:value="${id}" selected="selected" >User</option>-->
+<!--        <option th:text="${id}"-->
+<!--                th:value="${id}" value="XXX">space</option>-->
+<!--    </select>-->
 
 </form>
 

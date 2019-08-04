@@ -155,7 +155,6 @@ public class HomeController {
 
             Booking booking = bookingRepository.findByUser(2);
 
-            model.addAttribute("bookingId", booking.getId());
 
             model.addAttribute("message", "You have booked a space with following ID: ");
 
@@ -165,7 +164,7 @@ public class HomeController {
 
             model.addAttribute("space", spaceId);
 
-            model.addAttribute("booking", bookingId);
+            model.addAttribute("bookingId", bookingId);
 
         } catch (Exception e) {
 
