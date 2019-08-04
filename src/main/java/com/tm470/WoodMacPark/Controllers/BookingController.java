@@ -7,6 +7,7 @@ import com.tm470.WoodMacPark.Repositories.BookingRepository;
 import com.tm470.WoodMacPark.Repositories.SpaceRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -75,12 +76,52 @@ public class BookingController {
         return bookingRepository.saveAndFlush(existingBooking);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public Booking delete(@PathVariable int id)
+//    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+//    public ModelAndView delete(@PathVariable int id)
+//    {
+//        Booking existingBooking = bookingRepository.findById(id).orElse(null);
+//        bookingRepository.delete(existingBooking);
+//        return new ModelAndView("redirect:/myBooking", "null", null);
+//    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public ModelAndView delete(@ModelAttribute Booking booking,
+                               RedirectAttributes redirectAttributes)
     {
-        Booking existingBooking = bookingRepository.findById(id).orElse(null);
-        bookingRepository.delete(existingBooking);
-        return existingBooking;
+        try {
+            if(bookingRepository.findByUser(booking.getUser()) != null) {
+
+                int spaceId = booking.getSpace();
+
+                Space space = spaceRepository.findById(spaceId).orElse(null);
+
+                space.setBooked(false);
+
+                spaceRepository.saveAndFlush(space);
+
+                int bookingId = booking.getId();
+
+                Booking bookingToDelete = bookingRepository.findById(bookingId).orElse(null);
+
+                bookingRepository.delete(bookingToDelete);
+
+
+                redirectAttributes.addFlashAttribute("message", "Booking was successfully deleted.");
+
+
+            }
+
+            else {
+                redirectAttributes.addFlashAttribute("message", "You didn't have a booking.");
+
+            }
+
+            } catch (Exception e) {
+            System.out.println(e);
+        }
+        return new ModelAndView("redirect:/createBooking", "null", null);
+
+
     }
 
 

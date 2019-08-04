@@ -13,4 +13,7 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
     @Query(value = "SELECT * FROM Bookings b WHERE b.user = ?1", nativeQuery = true)
     Booking findByUser(@Param("user") int user);
 
+    @Query(value = "SELECT * FROM Bookings b WHERE b.space = ?1", nativeQuery = true)
+    Booking findBySpace(@Param("space") int space);
+
 }

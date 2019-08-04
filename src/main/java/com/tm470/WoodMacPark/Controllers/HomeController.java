@@ -146,33 +146,40 @@ public class HomeController {
     }
 
     @RequestMapping(value = {"/myBooking"})
-    public ModelAndView booking() {
+    public ModelAndView booking(Model model) {
 
-        Map<String, Object> model = new HashMap<String,Object>();
+        model.addAttribute("username", "Michal");
+        model.addAttribute("id", 2);
 
-        model.put("username", "Michal");
-        model.put("id", 2);
+        try {
 
-        Booking booking = bookingRepository.findByUser(2);
+            Booking booking = bookingRepository.findByUser(2);
 
-        if(booking != null) {
+            model.addAttribute("bookingId", booking.getId());
 
-            model.put("message", "You have booked a space with following ID: ");
+            model.addAttribute("message", "You have booked a space with following ID: ");
 
             int spaceId = booking.getSpace();
 
-            model.put("space", spaceId);
+            int bookingId = booking.getId();
 
-        } else {
+            model.addAttribute("space", spaceId);
 
-            model.put("message", "You don't have a booking.");
+            model.addAttribute("booking", bookingId);
 
-            model.put("space", null);
+        } catch (Exception e) {
 
+            model.addAttribute("bookingId", 0);
+
+            model.addAttribute("space", 0);
+
+            model.addAttribute("booking", 0);
+
+            model.addAttribute("message", "You don't have a booking.");
         }
 
 
-        return new ModelAndView("bookingsPage", "model", model);
+        return new ModelAndView("bookingsPage", "booking", new Booking());
     }
 
 
