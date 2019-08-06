@@ -59,6 +59,8 @@ public class BookingController {
 
             if(bookingRepository.findByUser(booking.getUser()) == null) {
 
+                weeklyBooking.setBookedThisWeek(true);
+
                 int spaceId = booking.getSpace();
 
                 Space space = spaceRepository.findById(spaceId).orElse(null);
