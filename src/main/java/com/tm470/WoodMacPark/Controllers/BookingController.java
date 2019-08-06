@@ -3,8 +3,10 @@ package com.tm470.WoodMacPark.Controllers;
 
 import com.tm470.WoodMacPark.Models.Booking;
 import com.tm470.WoodMacPark.Models.Space;
+import com.tm470.WoodMacPark.Models.WeeklyBooking;
 import com.tm470.WoodMacPark.Repositories.BookingRepository;
 import com.tm470.WoodMacPark.Repositories.SpaceRepository;
+import com.tm470.WoodMacPark.Repositories.WeeklyBookingRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -25,6 +27,9 @@ public class BookingController {
     @Autowired
     private SpaceRepository spaceRepository;
 
+    @Autowired
+    private WeeklyBookingRepository weeklyBookingRepository;
+
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Booking> list()
     {
@@ -41,29 +46,40 @@ public class BookingController {
     public ModelAndView create(@ModelAttribute Booking booking,
                                RedirectAttributes redirectAttributes)
     {
+        WeeklyBooking weeklyBooking = weeklyBookingRepository.findByUser(booking.getUser());
 
-        if(bookingRepository.findByUser(booking.getUser()) == null) {
+        if(weeklyBooking.isBookedThisWeek()) {
 
-            int spaceId = booking.getSpace();
-
-            Space space = spaceRepository.findById(spaceId).orElse(null);
-
-            space.setBooked(true);
-
-            spaceRepository.saveAndFlush(space);
-
-            bookingRepository.saveAndFlush(booking);
-
-            redirectAttributes.addFlashAttribute("message", "Booking successfully created.");
-
-            return new ModelAndView("redirect:/myBooking", "booking",
-                    new Booking());
-        } else {
-
-            redirectAttributes.addFlashAttribute("message", "You already have a booking.");
+            redirectAttributes.addFlashAttribute("message", "You already booked a space this week.");
 
             return new ModelAndView("redirect:/createBooking", "booking",
                     new Booking());
+
+        } else {
+
+            if(bookingRepository.findByUser(booking.getUser()) == null) {
+
+                int spaceId = booking.getSpace();
+
+                Space space = spaceRepository.findById(spaceId).orElse(null);
+
+                space.setBooked(true);
+
+                spaceRepository.saveAndFlush(space);
+
+                bookingRepository.saveAndFlush(booking);
+
+                redirectAttributes.addFlashAttribute("message", "Booking successfully created.");
+
+                return new ModelAndView("redirect:/myBooking", "booking",
+                        new Booking());
+            } else {
+
+                redirectAttributes.addFlashAttribute("message", "You already have a booking.");
+
+                return new ModelAndView("redirect:/createBooking", "booking",
+                        new Booking());
+            }
         }
 
     }

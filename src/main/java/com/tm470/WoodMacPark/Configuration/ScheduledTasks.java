@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableScheduling
 public class ScheduledTasks {
 
-    @Scheduled(cron = "0 1 24 * * ?")
+    @Scheduled(cron = "0 1 0 * * ?")
     public void clearBookingsAtEndOfDay() {
 
         System.out.println("Testing scheduled cron job");
