@@ -34,6 +34,9 @@ public class HomeController {
     @Autowired
     private BookingRepository bookingRepository;
 
+    @Autowired
+    private BookingsForTodayRepository bookingsForTodayRepository;
+
 
     @RequestMapping(value = {"/", "/home"})
     public ModelAndView home() {
@@ -153,27 +156,56 @@ public class HomeController {
 
         try {
 
-            Booking booking = bookingRepository.findByUser(2);
+            if (bookingRepository.findByUser(2) != null) {
+
+                Booking booking = bookingRepository.findByUser(2);
+
+                String message = "You have booked a space for tomorrow with following ID";
+
+                model.addAttribute("message", message);
+
+                int spaceId = booking.getSpace();
+
+                int bookingId = booking.getId();
+
+                model.addAttribute("space", spaceId);
+
+                model.addAttribute("bookingId", bookingId);
+
+            } else {
+
+                if(bookingsForTodayRepository.findByUser(2) != null) {
+
+                    BookingForToday bookingForToday = bookingsForTodayRepository.findByUser(2);
+
+                    String message = "You have booked a space for today with following ID";
+
+                    model.addAttribute("message", message);
+
+                    int spaceId = bookingForToday.getSpace();
+
+                    int bookingId = bookingForToday.getId();
+
+                    model.addAttribute("space", spaceId);
+
+                    model.addAttribute("bookingId", bookingId);
+
+                } else {
+
+                    model.addAttribute("bookingId", 0);
+
+                    model.addAttribute("space", 0);
 
 
-            model.addAttribute("message", "You have booked a space with following ID: ");
+                    model.addAttribute("message", "You don't have a booking.");
+                }
 
-            int spaceId = booking.getSpace();
+            }
 
-            int bookingId = booking.getId();
-
-            model.addAttribute("space", spaceId);
-
-            model.addAttribute("bookingId", bookingId);
 
         } catch (Exception e) {
 
-            model.addAttribute("bookingId", 0);
-
-            model.addAttribute("space", 0);
-
-
-            model.addAttribute("message", "You don't have a booking.");
+           System.out.println(e);
         }
 
 
