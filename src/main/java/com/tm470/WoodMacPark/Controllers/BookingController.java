@@ -46,9 +46,8 @@ public class BookingController {
     public ModelAndView create(@ModelAttribute Booking booking,
                                RedirectAttributes redirectAttributes)
     {
-        WeeklyBooking weeklyBooking = weeklyBookingRepository.findByUser(booking.getUser());
 
-        if(weeklyBooking.isBookedThisWeek()) {
+        if(weeklyBookingRepository.findByUser(booking.getUser()) != null) {
 
             redirectAttributes.addFlashAttribute("message", "You already booked a space this week.");
 
@@ -59,7 +58,13 @@ public class BookingController {
 
             if(bookingRepository.findByUser(booking.getUser()) == null) {
 
+                WeeklyBooking weeklyBooking = new WeeklyBooking();
+
                 weeklyBooking.setBookedThisWeek(true);
+
+                weeklyBooking.setUserId(booking.getUser());
+
+                weeklyBookingRepository.saveAndFlush(weeklyBooking);
 
                 int spaceId = booking.getSpace();
 
@@ -97,8 +102,7 @@ public class BookingController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public ModelAndView delete(@PathVariable int id,
-                               RedirectAttributes redirectAttributes)
-    {
+                               RedirectAttributes redirectAttributes) {
         try {
             if(bookingRepository.findById(id) != null) {
 
@@ -116,7 +120,6 @@ public class BookingController {
 
 
                 redirectAttributes.addFlashAttribute("message", "Booking was successfully deleted.");
-
 
             }
 

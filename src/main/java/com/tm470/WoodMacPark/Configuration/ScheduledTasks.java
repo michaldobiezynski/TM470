@@ -16,7 +16,7 @@ public class ScheduledTasks {
     @Autowired
     private WeeklyBookingRepository weeklyBookingRepository;
 
-    @Scheduled(cron = "0 * * * * ?")
+    @Scheduled(cron = "1 0 0 ? * Fri")
     public void clearBookingsAtEndOfDay() {
 
         try {
