@@ -13,6 +13,4 @@ public interface WeeklyBookingRepository extends JpaRepository<WeeklyBooking, In
     @Query(value = "SELECT * FROM WeeklyBookings b WHERE b.userId = ?1", nativeQuery = true)
     WeeklyBooking findByUser(@Param("user") int user);
 
-    long deleteAllByBookedThisWeek(Boolean boo);
-
 }

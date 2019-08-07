@@ -16,12 +16,12 @@ public class ScheduledTasks {
     @Autowired
     private WeeklyBookingRepository weeklyBookingRepository;
 
-    @Scheduled(cron = "0 1 0 * * ?")
+    @Scheduled(cron = "0 * * * * ?")
     public void clearBookingsAtEndOfDay() {
 
         try {
 
-            weeklyBookingRepository.deleteAllByBookedThisWeek(true);
+            weeklyBookingRepository.deleteAll();
 
         } catch (Exception e) {
 
