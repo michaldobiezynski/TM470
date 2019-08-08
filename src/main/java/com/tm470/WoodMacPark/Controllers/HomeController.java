@@ -160,7 +160,7 @@ public class HomeController {
 
                 Booking booking = bookingRepository.findByUser(2);
 
-                String message = "You have booked a space for tomorrow with following ID";
+                String message = "You have booked a space for tomorrow with following ID:";
 
                 model.addAttribute("message", message);
 
@@ -178,7 +178,7 @@ public class HomeController {
 
                     BookingForToday bookingForToday = bookingsForTodayRepository.findByUser(2);
 
-                    String message = "You have booked a space for today with following ID";
+                    String message = "You have booked a space for today with following ID:";
 
                     model.addAttribute("message", message);
 

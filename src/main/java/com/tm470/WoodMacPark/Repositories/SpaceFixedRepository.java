@@ -11,6 +11,8 @@ import java.util.List;
 public interface SpaceFixedRepository extends JpaRepository<Space, Boolean>{
 
     List<Space> findByFixed(@Param("Fixed") boolean fixed);
+
+    List<Space> findByFixedIsNot(@Param("NotFixed") boolean notFixed);
 }
 
 
