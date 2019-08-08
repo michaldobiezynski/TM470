@@ -42,7 +42,7 @@ public class ScheduledTasks {
         }
     }
 
-    @Scheduled(fixedDelay = 1000000)
+    @Scheduled(fixedDelay = 40000)
     public void moveBookingsToTodayTable() {
 
         List<Space> notFixedSpaces = spaceFixedRepository.findByFixedIsNot(true);
@@ -68,6 +68,12 @@ public class ScheduledTasks {
 
                     bookingRepository.delete(booking);
 
+                    space.setBooked(false);
+
+                    space.setUserId(0);
+
+                    spaceFixedRepository.saveAndFlush(space);
+
                 } else {
 
                     System.out.println("There is no booking for this space: " + space.getId());
@@ -77,6 +83,11 @@ public class ScheduledTasks {
         }
     }
 
+    @Scheduled(fixedDelay = 50000)
+    public void clearBookingsForTodayTable() {
 
+        bookingsForTodayRepository.deleteAll();
+
+    }
 
 }
