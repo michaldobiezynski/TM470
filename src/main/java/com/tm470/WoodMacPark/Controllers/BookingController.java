@@ -46,48 +46,61 @@ public class BookingController {
     public ModelAndView create(@ModelAttribute Booking booking,
                                RedirectAttributes redirectAttributes)
     {
+        if(booking.getSpace() == 0) {
 
-        if(weeklyBookingRepository.findByUser(booking.getUser()) != null) {
-
-            redirectAttributes.addFlashAttribute("message", "You already booked a space this week.");
+            redirectAttributes.addFlashAttribute("message", "You didn't pick a space for your booking.");
 
             return new ModelAndView("redirect:/createBooking", "booking",
                     new Booking());
 
         } else {
 
-            if(bookingRepository.findByUser(booking.getUser()) == null) {
+            if(weeklyBookingRepository.findByUser(booking.getUser()) != null) {
 
-                WeeklyBooking weeklyBooking = new WeeklyBooking();
-
-                weeklyBooking.setBookedThisWeek(true);
-
-                weeklyBooking.setUserId(booking.getUser());
-
-                weeklyBookingRepository.saveAndFlush(weeklyBooking);
-
-                int spaceId = booking.getSpace();
-
-                Space space = spaceRepository.findById(spaceId).orElse(null);
-
-                space.setBooked(true);
-
-                spaceRepository.saveAndFlush(space);
-
-                bookingRepository.saveAndFlush(booking);
-
-                redirectAttributes.addFlashAttribute("message", "Booking successfully created.");
-
-                return new ModelAndView("redirect:/myBooking", "booking",
-                        new Booking());
-            } else {
-
-                redirectAttributes.addFlashAttribute("message", "You already have a booking.");
+                redirectAttributes.addFlashAttribute("message", "You already booked a space this week.");
 
                 return new ModelAndView("redirect:/createBooking", "booking",
                         new Booking());
+
+            } else {
+
+                if(bookingRepository.findByUser(booking.getUser()) == null) {
+
+                    WeeklyBooking weeklyBooking = new WeeklyBooking();
+
+                    weeklyBooking.setBookedThisWeek(true);
+
+                    weeklyBooking.setUserId(booking.getUser());
+
+                    weeklyBookingRepository.saveAndFlush(weeklyBooking);
+
+                    int spaceId = booking.getSpace();
+
+                    Space space = spaceRepository.findById(spaceId).orElse(null);
+
+                    space.setBooked(true);
+
+                    spaceRepository.saveAndFlush(space);
+
+                    bookingRepository.saveAndFlush(booking);
+
+                    redirectAttributes.addFlashAttribute("message", "Booking successfully created.");
+
+                    return new ModelAndView("redirect:/myBooking", "booking",
+                            new Booking());
+                } else {
+
+                    redirectAttributes.addFlashAttribute("message", "You already have a booking.");
+
+                    return new ModelAndView("redirect:/createBooking", "booking",
+                            new Booking());
+                }
             }
+
+
         }
+
+
 
     }
 
