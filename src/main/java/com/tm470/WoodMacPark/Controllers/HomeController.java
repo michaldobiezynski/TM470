@@ -46,6 +46,11 @@ public class HomeController {
         return new ModelAndView("homepage", "model", model);
     }
 
+    @RequestMapping(value = "/help")
+    public String helpPage() {
+        return "help";
+    }
+
     @RequestMapping(value={"/login"}, method = RequestMethod.GET)
     public String login() {
         return "login";

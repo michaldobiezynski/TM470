@@ -42,7 +42,7 @@ public class ScheduledTasks {
         }
     }
 
-    @Scheduled(fixedDelay = 40000)
+    @Scheduled(fixedDelay = 40000000)
     public void moveBookingsToTodayTable() {
 
         List<Space> notFixedSpaces = spaceFixedRepository.findByFixedIsNot(true);
@@ -83,7 +83,7 @@ public class ScheduledTasks {
         }
     }
 
-    @Scheduled(fixedDelay = 50000)
+    @Scheduled(fixedDelay = 50000000)
     public void clearBookingsForTodayTable() {
 
         bookingsForTodayRepository.deleteAll();

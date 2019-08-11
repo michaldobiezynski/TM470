@@ -164,6 +164,18 @@ h1 {
     margin-left:43%;
 }
 
+#ruleTxt {
+    margin-left:35%;
+    font-family: algerian, courier;
+}
+
+#ruleTxtBold {
+    margin-left:35%;
+    font-family: algerian, courier;
+    font: bold;
+    font-size: 23px;
+}
+
 #welcomeMsg {
     margin-left:35%;
     font-family: algerian, courier;
