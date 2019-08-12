@@ -56,6 +56,11 @@ public class HomeController {
         return "login";
     }
 
+    @RequestMapping(value={"/map"}, method = RequestMethod.GET)
+    public String map() {
+        return "map";
+    }
+
 //put this back in account controller class
     @RequestMapping(value = "/new")
     public ModelAndView create()
