@@ -64,9 +64,13 @@ public class HomeController {
             model.addAttribute("username", "Michal");
             model.addAttribute("id", 2);
 
-            List<Space> allFreeSpc = spaceBookedRepository.findByBooked(false);
+            List<Space> allSpc = spaceBookedRepository.findAll();
 
-            model.addAttribute("allFreeSpc", allFreeSpc);
+            for (Space space:allSpc) {
+                
+                model.addAttribute("space"+space.getId(), space);
+
+            }
 
 
             return new ModelAndView("map",
