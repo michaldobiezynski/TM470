@@ -67,8 +67,14 @@ public class HomeController {
             List<Space> allSpc = spaceBookedRepository.findAll();
 
             for (Space space:allSpc) {
-                
-                model.addAttribute("space"+space.getId(), space);
+
+                if(space.isBooked()) {
+
+                    model.addAttribute(Integer.toString(space.getId()), "red");
+
+                } else {
+                    model.addAttribute(Integer.toString(space.getId()), "green");
+                }
 
             }
 
