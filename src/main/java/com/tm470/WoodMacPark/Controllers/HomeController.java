@@ -58,8 +58,20 @@ public class HomeController {
 
 
     @RequestMapping(value={"/map"}, method = RequestMethod.GET)
-    public String map() {
-        return "map";
+    public ModelAndView map(Model model) {
+
+        {
+            model.addAttribute("username", "Michal");
+            model.addAttribute("id", 2);
+
+            List<Space> allFreeSpc = spaceBookedRepository.findByBooked(false);
+
+            model.addAttribute("allFreeSpc", allFreeSpc);
+
+
+            return new ModelAndView("map",
+                    "booking", new Booking());
+        }
     }
 
 
