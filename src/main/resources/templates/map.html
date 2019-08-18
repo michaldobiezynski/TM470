@@ -6,6 +6,14 @@
     <script>
         function checkParking() {
 
+            var str = document.getElementById("a1space");
+
+            if (str.innerText == "red") {
+                document.getElementById("a1").style.backgroundColor = 'red';
+            } else {
+                document.getElementById("a1").style.backgroundColor = 'green';
+            }
+
             // document.getElementById("a1").style.backgroundColor = 'red';
             // document.getElementById("a2").style.backgroundColor = 'red';
             // document.getElementById("a3").style.backgroundColor = 'red';
@@ -173,11 +181,8 @@
     </tbody>
 </table>
 
-<select id="a1space" name="a1space" th:field="${booking.space}">
-    <option th:value="${1}" selected="selected" >User</option>
-    <option th:text="${id}"
-            th:value="${id}" value="XXX">space</option>
-</select>
+
+<p id="a1space"> <span th:text="${1}"> message</span> </p>
 
 <div class="sidenav">
     <br>
