@@ -32,62 +32,62 @@ public class ScheduledTasks {
     private BookingsForTodayRepository bookingsForTodayRepository;
 
 
-    @Scheduled(cron = "1 0 0 ? * Fri")
-    public void clearBookingsAtEndOfDay() {
-
-        try {
-            weeklyBookingRepository.deleteAll();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    @Scheduled(fixedDelay = 40000000)
-    public void moveBookingsToTodayTable() {
-
-        List<Space> notFixedSpaces = spaceFixedRepository.findByFixedIsNot(true);
-
-        if(notFixedSpaces.isEmpty()) {
-
-            System.out.println("All spaces are fixed.");
-
-        } else {
-
-            for (Space space:notFixedSpaces) {
-
-                if(bookingRepository.findBySpace(space.getId()) != null ){
-                    Booking booking = bookingRepository.findBySpace(space.getId());
-
-                    BookingForToday bookingForToday = new BookingForToday();
-
-                    bookingForToday.setSpace(booking.getSpace());
-
-                    bookingForToday.setUser(booking.getUser());
-
-                    bookingsForTodayRepository.saveAndFlush(bookingForToday);
-
-                    bookingRepository.delete(booking);
-
-                    space.setBooked(false);
-
-                    space.setUserId(0);
-
-                    spaceFixedRepository.saveAndFlush(space);
-
-                } else {
-
-                    System.out.println("There is no booking for this space: " + space.getId());
-
-                }
-            }
-        }
-    }
-
-    @Scheduled(fixedDelay = 50000000)
-    public void clearBookingsForTodayTable() {
-
-        bookingsForTodayRepository.deleteAll();
-
-    }
+//    @Scheduled(cron = "1 0 0 ? * Fri")
+//    public void clearBookingsAtEndOfDay() {
+//
+//        try {
+//            weeklyBookingRepository.deleteAll();
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//    }
+//
+//    @Scheduled(fixedDelay = 40000000)
+//    public void moveBookingsToTodayTable() {
+//
+//        List<Space> notFixedSpaces = spaceFixedRepository.findByFixedIsNot(true);
+//
+//        if(notFixedSpaces.isEmpty()) {
+//
+//            System.out.println("All spaces are fixed.");
+//
+//        } else {
+//
+//            for (Space space:notFixedSpaces) {
+//
+//                if(bookingRepository.findBySpace(space.getId()) != null ){
+//                    Booking booking = bookingRepository.findBySpace(space.getId());
+//
+//                    BookingForToday bookingForToday = new BookingForToday();
+//
+//                    bookingForToday.setSpace(booking.getSpace());
+//
+//                    bookingForToday.setUser(booking.getUser());
+//
+//                    bookingsForTodayRepository.saveAndFlush(bookingForToday);
+//
+//                    bookingRepository.delete(booking);
+//
+//                    space.setBooked(false);
+//
+//                    space.setUserId(0);
+//
+//                    spaceFixedRepository.saveAndFlush(space);
+//
+//                } else {
+//
+//                    System.out.println("There is no booking for this space: " + space.getId());
+//
+//                }
+//            }
+//        }
+//    }
+//
+//    @Scheduled(fixedDelay = 50000000)
+//    public void clearBookingsForTodayTable() {
+//
+//        bookingsForTodayRepository.deleteAll();
+//
+//    }
 
 }
