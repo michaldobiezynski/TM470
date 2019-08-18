@@ -80,6 +80,8 @@ public class BookingController {
 
                     space.setBooked(true);
 
+                    space.setUserId(booking.getUser());
+
                     spaceRepository.saveAndFlush(space);
 
                     bookingRepository.saveAndFlush(booking);
