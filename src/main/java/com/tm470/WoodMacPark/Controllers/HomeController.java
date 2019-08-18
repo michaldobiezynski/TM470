@@ -70,10 +70,12 @@ public class HomeController {
 
                 if(space.isBooked()) {
 
-                    model.addAttribute(Integer.toString(space.getId()), "red");
+                    model.addAttribute("space" + space.getId(), "red");
+
 
                 } else {
-                    model.addAttribute(Integer.toString(space.getId()), "green");
+                    model.addAttribute("space" + space.getId(), "green");
+                   
                 }
 
             }
