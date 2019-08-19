@@ -8,6 +8,35 @@
 
             document.getElementById("bookingSpaceUser").style.display = "none";
             document.getElementById("bookingSpaceId").style.display = "none";
+            document.getElementById("bookingSpaceUser2").style.display = "none";
+            document.getElementById("bookingSpaceId2").style.display = "none";
+            document.getElementById("bookingSpaceUser3").style.display = "none";
+            document.getElementById("bookingSpaceId3").style.display = "none";
+            document.getElementById("bookingSpaceUser4").style.display = "none";
+            document.getElementById("bookingSpaceId4").style.display = "none";
+            document.getElementById("bookingSpaceUser5").style.display = "none";
+            document.getElementById("bookingSpaceId5").style.display = "none";
+            document.getElementById("bookingSpaceUser6").style.display = "none";
+            document.getElementById("bookingSpaceId6").style.display = "none";
+            document.getElementById("bookingSpaceUser7").style.display = "none";
+            document.getElementById("bookingSpaceId7").style.display = "none";
+            document.getElementById("bookingSpaceUser8").style.display = "none";
+            document.getElementById("bookingSpaceId8").style.display = "none";
+            document.getElementById("bookingSpaceUser9").style.display = "none";
+            document.getElementById("bookingSpaceId9").style.display = "none";
+            document.getElementById("bookingSpaceUser10").style.display = "none";
+            document.getElementById("bookingSpaceId10").style.display = "none";
+            document.getElementById("bookingSpaceUser11").style.display = "none";
+            document.getElementById("bookingSpaceId11").style.display = "none";
+            document.getElementById("bookingSpaceUser12").style.display = "none";
+            document.getElementById("bookingSpaceId12").style.display = "none";
+            document.getElementById("bookingSpaceUser13").style.display = "none";
+            document.getElementById("bookingSpaceId13").style.display = "none";
+            document.getElementById("bookingSpaceUser14").style.display = "none";
+            document.getElementById("bookingSpaceId14").style.display = "none";
+            document.getElementById("bookingSpaceUser15").style.display = "none";
+            document.getElementById("bookingSpaceId15").style.display = "none";
+
 
                 var str = document.getElementById("a1space");
 
@@ -230,10 +259,66 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
-        <td id="a6"><img src="A6.png" class="gallery__img" th:src="@{images/A6.png}"/></td>
-        <td id="a7"><img src="A7.png" class="gallery__img" th:src="@{images/A7.png}"/></td>
-        <td id="a8"><img src="A8.png" class="gallery__img" th:src="@{images/A8.png}"/></td>
-        <td id="a9"><img src="A9.png" class="gallery__img" th:src="@{images/A9.png}"/></td>
+        <td id="a6">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId6" name="bookingSpaceId6" th:field="${booking.space}">
+                    <option th:value="${6}" selected="selected" >Space</option>
+                    <option th:text="${6}"
+                            th:value="${6}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser6" name="bookingSpaceUser6" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A6.png}" alt="Submit Form" />
+            </form>
+        </td>
+        <td id="a7">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId7" name="bookingSpaceId7" th:field="${booking.space}">
+                    <option th:value="${7}" selected="selected" >Space</option>
+                    <option th:text="${7}"
+                            th:value="${7}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser7" name="bookingSpaceUser7" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A7.png}" alt="Submit Form" />
+            </form>
+        </td>
+        <td id="a8">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId8" name="bookingSpaceId8" th:field="${booking.space}">
+                    <option th:value="${8}" selected="selected" >Space</option>
+                    <option th:text="${8}"
+                            th:value="${8}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser8" name="bookingSpaceUser8" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A8.png}" alt="Submit Form" />
+            </form>
+        </td>
+        <td id="a9">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId9" name="bookingSpaceId9" th:field="${booking.space}">
+                    <option th:value="${9}" selected="selected" >Space</option>
+                    <option th:text="${9}"
+                            th:value="${9}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser9" name="bookingSpaceUser9" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A9.png}" alt="Submit Form" />
+            </form>
+        </td>
         <td>&nbsp;</td>
 
 
@@ -249,7 +334,21 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
-        <td id="a5"><img src="A5.png" class="gallery__img" th:src="@{images/A5.png}"/></td>
+        <td id="a5">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId5" name="bookingSpaceId5" th:field="${booking.space}">
+                    <option th:value="${5}" selected="selected" >Space</option>
+                    <option th:text="${5}"
+                            th:value="${5}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser5" name="bookingSpaceUser5" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A5.png}" alt="Submit Form" />
+            </form>
+        </td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
@@ -269,11 +368,67 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
-        <td id="a4"><img src="A4.png" class="gallery__img" th:src="@{images/A4.png}"/></td>
+        <td id="a4">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId4" name="bookingSpaceId4" th:field="${booking.space}">
+                    <option th:value="${4}" selected="selected" >Space</option>
+                    <option th:text="${4}"
+                            th:value="${4}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser4" name="bookingSpaceUser4" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A4.png}" alt="Submit Form" />
+            </form>
+        </td>
         <td>&nbsp;</td>
-        <td id="a12"><img src="A12.png" class="gallery__img" th:src="@{images/A12.png}"/></td>
-        <td id="a11"><img src="A11.png" class="gallery__img" th:src="@{images/A11.png}"/></td>
-        <td id="a10"><img src="A10.png" class="gallery__img" th:src="@{images/A10.png}"/></td>
+        <td id="a12">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId12" name="bookingSpaceId12" th:field="${booking.space}">
+                    <option th:value="${12}" selected="selected" >Space</option>
+                    <option th:text="${12}"
+                            th:value="${12}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser12" name="bookingSpaceUser12" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A12.png}" alt="Submit Form" />
+            </form>
+        </td>
+        <td id="a11">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId11" name="bookingSpaceId11" th:field="${booking.space}">
+                    <option th:value="${11}" selected="selected" >Space</option>
+                    <option th:text="${11}"
+                            th:value="${11}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser11" name="bookingSpaceUser11" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A11.png}" alt="Submit Form" />
+            </form>
+        </td>
+        <td id="a10">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId10" name="bookingSpaceId10" th:field="${booking.space}">
+                    <option th:value="${10}" selected="selected" >Space</option>
+                    <option th:text="${10}"
+                            th:value="${10}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser10" name="bookingSpaceUser10" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A10.png}" alt="Submit Form" />
+            </form>
+        </td>
         <td>&nbsp;</td>
 
 
@@ -289,9 +444,38 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
-        <td id="a3"><img src="A3.png" class="gallery__img" th:src="@{images/A3.png}"/></td>
+        <td id="a3">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId3" name="bookingSpaceId3" th:field="${booking.space}">
+                    <option th:value="${3}" selected="selected" >Space</option>
+                    <option th:text="${3}"
+                            th:value="${3}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser3" name="bookingSpaceUser3" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A3.png}" alt="Submit Form" />
+            </form>
+
+        </td>
         <td>&nbsp;</td>
-        <td id="a13"><img src="A13.png" class="gallery__img" th:src="@{images/A13.png}"/></td>
+        <td id="a13">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId13" name="bookingSpaceId13" th:field="${booking.space}">
+                    <option th:value="${13}" selected="selected" >Space</option>
+                    <option th:text="${13}"
+                            th:value="${13}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser13" name="bookingSpaceUser13" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A13.png}" alt="Submit Form" />
+            </form>
+        </td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
@@ -309,9 +493,37 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
-        <td id="a2"><img src="A2.png" class="gallery__img" th:src="@{images/A2.png}"/></td>
+        <td id="a2">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId2" name="bookingSpaceId2" th:field="${booking.space}">
+                    <option th:value="${2}" selected="selected" >Space</option>
+                    <option th:text="${2}"
+                            th:value="${2}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser2" name="bookingSpaceUser2" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A2.png}" alt="Submit Form" />
+            </form>
+        </td>
         <td>&nbsp;</td>
-        <td id="a14"><img src="A14.png" class="gallery__img" th:src="@{images/A14.png}"/></td>
+        <td id="a14">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId14" name="bookingSpaceId14" th:field="${booking.space}">
+                    <option th:value="${14}" selected="selected" >Space</option>
+                    <option th:text="${14}"
+                            th:value="${14}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser14" name="bookingSpaceUser14" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A14.png}" alt="Submit Form" />
+            </form>
+        </td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
@@ -345,7 +557,21 @@
             </form>
         </td>
         <td>&nbsp;</td>
-        <td id="a15"><img src="A15.png" class="gallery__img" th:src="@{images/A15.png}"/></td>
+        <td id="a15">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId15" name="bookingSpaceId15" th:field="${booking.space}">
+                    <option th:value="${15}" selected="selected" >Space</option>
+                    <option th:text="${15}"
+                            th:value="${15}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser15" name="bookingSpaceUser15" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A15.png}" alt="Submit Form" />
+            </form>
+        </td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
