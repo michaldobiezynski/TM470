@@ -55,6 +55,16 @@ public class BookingController {
 
         } else {
 
+
+            if(spaceRepository.getOne(booking.getSpace()).isBooked()) {
+
+                redirectAttributes.addFlashAttribute("message", "This space is already booked!");
+
+                return new ModelAndView("redirect:/createBooking", "booking",
+                        new Booking());
+
+            }
+
             if(weeklyBookingRepository.findByUser(booking.getUser()) != null) {
 
                 redirectAttributes.addFlashAttribute("message", "You already booked a space this week.");
