@@ -6,6 +6,9 @@
     <script>
         function checkParking() {
 
+            document.getElementById("bookingSpaceUser").style.display = "none";
+            document.getElementById("bookingSpaceId").style.display = "none";
+
                 var str = document.getElementById("a1space");
 
                 if (str.innerText == "red") {
@@ -326,7 +329,21 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
-        <td id="a1"><img src="A1.png" class="gallery__img" th:src="@{images/A1.png}"/></td>
+        <td id="a1">
+            <form action="/bookings/new" method="POST" th:object="${booking}">
+                <select id="bookingSpaceId" name="bookingSpaceId" th:field="${booking.space}">
+                    <option th:value="${1}" selected="selected" >Space</option>
+                    <option th:text="${1}"
+                            th:value="${1}" value="XXX">space</option>
+                </select>
+                <select id="bookingSpaceUser" name="bookingSpaceUser" th:field="${booking.user}">
+                    <option th:value="${id}" selected="selected" >User</option>
+                    <option th:text="${id}"
+                            th:value="${id}" value="XXX">user</option>
+                </select>
+                <input class="gallery__img" type="image" th:src="@{images/A1.png}" alt="Submit Form" />
+            </form>
+        </td>
         <td>&nbsp;</td>
         <td id="a15"><img src="A15.png" class="gallery__img" th:src="@{images/A15.png}"/></td>
         <td>&nbsp;</td>

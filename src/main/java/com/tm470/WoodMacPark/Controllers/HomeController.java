@@ -75,7 +75,7 @@ public class HomeController {
 
                 } else {
                     model.addAttribute("space" + space.getId(), "green");
-                   
+
                 }
 
             }
