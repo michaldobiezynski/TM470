@@ -87,16 +87,18 @@ public class HomeController {
     }
 
 
-//put this back in account controller class
-    @RequestMapping(value = "/new")
+    @RequestMapping(value = "/admin/newAccount")
     public ModelAndView create()
     {
         return new ModelAndView("createAccount","account", new Account());
     }
 
+    @RequestMapping(value = "/admin/deleteAccount")
+    public ModelAndView delete()
+    {
+        return new ModelAndView("deleteAccount","account", new Account());
+    }
 
-
-    //put this back in space controller class
     @RequestMapping(value = "/newS", method=RequestMethod.GET)
     public ModelAndView createS(Model model)
     {
@@ -108,7 +110,6 @@ public class HomeController {
         return new ModelAndView("createSpace","space",new Space());
     }
 
-    //put this back in space controller class
     @RequestMapping(value = "/ListAcc", method=RequestMethod.GET)
     public String ListAcc(Model model)
     {

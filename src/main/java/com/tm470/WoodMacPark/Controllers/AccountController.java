@@ -1,8 +1,7 @@
 package com.tm470.WoodMacPark.Controllers;
 
 import com.tm470.WoodMacPark.Models.Account;
-import com.tm470.WoodMacPark.Repositories.AccountNameRepository;
-import com.tm470.WoodMacPark.Repositories.AccountIdRepository;
+import com.tm470.WoodMacPark.Repositories.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +19,15 @@ public class AccountController {
 
     @Autowired
     private AccountNameRepository accountNameRepository;
+
+     @Autowired
+    private SpaceRepository spaceRepository;
+
+    @Autowired
+    private SpaceBookedRepository spaceBookedRepository;
+
+    @Autowired
+    private SpaceFixedRepository spaceFixedRepository;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Account> list() {
