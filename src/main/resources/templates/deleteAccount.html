@@ -22,35 +22,34 @@
 
 <p id="title">WoodMac Parking</p>
 
-<!--<form action="/bookings/new" method="POST" th:object="${booking}">-->
-<!--    <div class="Box">-->
+<form action="/accounts/delete" method="POST" th:object="${account}">
+    <div class="Box">
 
 
-<!--        <div class="fieldSection2">-->
-<!--            <h2 id="cb">Delete Account</h2>-->
-<!--            <br>-->
-<!--            <br>-->
-<!--            <p id="bookingExistMsg" th:text="${message}"></p>-->
-<!--            <br>-->
-<!--            <p>Which account?</p>-->
-<!--            <select id="accountName" name="accountName" th:field="${booking.space}">-->
-<!--                <option value=0 selected="selected" >Free space</option>-->
-<!--                <option th:each="space : ${allFreeSpc}" th:text="${space.id}"-->
-<!--                        th:value="${space.id}" value="XXX">space</option>-->
-<!--            </select>-->
-<!--            </p>-->
-<!--            <br>-->
-<!--            <br>-->
-<!--            <input type="submit" value="Submit" class="button2" />-->
-<!--            <br>-->
-<!--            <br>-->
-<!--            <input type="button" value="Main menu" class="button2" />-->
+        <div class="fieldSection2">
+            <h2 id="cb">Delete Account</h2>
+            <br>
+            <br>
+            <br>
+            <p>Which account?</p>
+            <select id="accountName" name="accountName" th:field="${account.idUser}">
+                <option value=0 selected="selected" ></option>
+                <option th:each="account : ${allAcc}" th:text="${account.email}"
+                        th:value="${account.idUser}" value="XXX">account</option>
+            </select>
+            </p>
+            <br>
+            <br>
+            <input type="submit" value="Submit" class="button2" />
+            <br>
+            <br>
+            <input type="button" value="Main menu" class="button2" />
 
-<!--        </div>-->
+        </div>
 
-<!--    </div>-->
+    </div>
 
-<!--</form>-->
+</form>
 
 <p id="footnote">
     <br />

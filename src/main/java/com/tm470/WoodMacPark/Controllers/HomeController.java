@@ -94,9 +94,15 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/admin/deleteAccount")
-    public ModelAndView delete()
+    public ModelAndView delete(Model model)
     {
-        return new ModelAndView("deleteAccount","account", new Account());
+
+
+        List<Account> allAccounts = accountIdRepository.findAll();
+
+        model.addAttribute("allAcc", allAccounts);
+
+        return new ModelAndView("deleteAccount", "account", new Account());
     }
 
     @RequestMapping(value = "/newS", method=RequestMethod.GET)
