@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="main.css" th:href="@{css/main.css}"/>
+</head>
+<body>
+
+<div class="sidenav">
+    <br>
+    <br>
+    <a href="#">Profile</a>
+    <br>
+    <a href="#">Bookings</a>
+    <br>
+    <a href="#">Map</a>
+    <br>
+    <a href="#">Help</a>
+    <br>
+    <a href="#">Logout</a>
+    <br>
+</div>
+
+<p id="title">WoodMac Parking</p>
+
+<form action="/bookings/newFixed" method="POST" th:object="${booking}">
+    <div class="Box">
+
+
+        <div class="fieldSection2">
+            <h2 id="cb">Create a booking</h2>
+            <br>
+            <br>
+            <p id="bookingExistMsg" th:text="${message}"></p>
+            <br>
+            <p>Which space?</p>
+            <select id="bookingSpace" name="bookingSpace" th:field="${booking.space}">
+                <option value=0 selected="selected" >Free space</option>
+                <option th:each="space : ${allFreeSpc}" th:text="${space.id}"
+                        th:value="${space.id}" value="XXX">space</option>
+            </select>
+            <br>
+            <br>
+            </p>
+            <br>
+            <br>
+            <input type="submit" value="Submit" class="button2" />
+            <br>
+            <br>
+            <input type="button" value="Main menu" class="button2" />
+
+        </div>
+
+    </div>
+
+</form>
+
+<p id="footnote">
+    <br />
+    Copright &copy; - Michal Dobiezynski   2019
+</p>
+</body>
+
+</html>

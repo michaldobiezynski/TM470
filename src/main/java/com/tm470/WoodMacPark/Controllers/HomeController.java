@@ -104,6 +104,14 @@ public class HomeController {
         return new ModelAndView("deleteAccount", "account", new Account());
     }
 
+
+    @RequestMapping(value = "/admin/newFixedSpace")
+    public ModelAndView createFixedSpace() {
+
+
+        return new ModelAndView("createFixedSpace", )
+    }
+
     @RequestMapping(value = "/newS", method=RequestMethod.GET)
     public ModelAndView createS(Model model)
     {
