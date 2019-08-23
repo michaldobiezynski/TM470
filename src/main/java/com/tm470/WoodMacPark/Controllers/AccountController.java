@@ -20,14 +20,6 @@ public class AccountController {
     @Autowired
     private AccountNameRepository accountNameRepository;
 
-     @Autowired
-    private SpaceRepository spaceRepository;
-
-    @Autowired
-    private SpaceBookedRepository spaceBookedRepository;
-
-    @Autowired
-    private SpaceFixedRepository spaceFixedRepository;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Account> list() {
@@ -60,6 +52,45 @@ public class AccountController {
         redirectAttributes.addFlashAttribute("message", "Account successfully updated.");
 
         return new ModelAndView("redirect:/editProfile","account",existingAccount);
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public ModelAndView deleteProfile(@ModelAttribute Account account,
+                                      RedirectAttributes redirectAttributes)
+    {
+        if(account.getIdUser() == 1) {
+
+            List<Account> allAccounts = accountRepository.findAll();
+
+            redirectAttributes.addFlashAttribute("allAcc", allAccounts);
+
+            redirectAttributes.addFlashAttribute("message", "You can't delete admin account.");
+
+            return new ModelAndView("redirect:/admin/deleteAccount","account",new Account());
+        }
+        else if (account.getIdUser() ==0) {
+
+            List<Account> allAccounts = accountRepository.findAll();
+
+            redirectAttributes.addFlashAttribute("allAcc", allAccounts);
+
+            redirectAttributes.addFlashAttribute("message", "You have not selected an account.");
+
+            return new ModelAndView("redirect:/admin/deleteAccount","account",new Account());
+
+        } else {
+
+            accountRepository.delete(account);
+
+            List<Account> allAccounts = accountRepository.findAll();
+
+            redirectAttributes.addFlashAttribute("allAcc", allAccounts);
+
+            redirectAttributes.addFlashAttribute("message", "Account successfully deleted.");
+
+            return new ModelAndView("redirect:/admin/deleteAccount","account",new Account());
+
+        }
     }
 
 
@@ -106,6 +137,8 @@ public class AccountController {
         accountRepository.delete(existingAccount);
         return existingAccount;
     }
+
+
 
 
 

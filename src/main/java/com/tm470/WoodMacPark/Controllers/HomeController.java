@@ -97,7 +97,6 @@ public class HomeController {
     public ModelAndView delete(Model model)
     {
 
-
         List<Account> allAccounts = accountIdRepository.findAll();
 
         model.addAttribute("allAcc", allAccounts);
