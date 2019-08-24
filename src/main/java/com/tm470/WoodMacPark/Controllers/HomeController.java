@@ -106,10 +106,27 @@ public class HomeController {
 
 
     @RequestMapping(value = "/admin/newFixedSpace")
-    public ModelAndView createFixedSpace() {
+    public ModelAndView createFixedSpace(Model model) {
+
+        model.addAttribute("username", "Michal");
+        model.addAttribute("id", 2);
+
+        List<Space> allFreeSpc = spaceBookedRepository.findByBooked(false);
+
+        model.addAttribute("allFreeSpc", allFreeSpc);
+
+        return new ModelAndView("createFixedSpace", "space", new Space());
+    }
+
+    @RequestMapping(value = "/admin/deleteFixedSpace")
+    public ModelAndView deleteFixedSpace(Model model) {
 
 
-        return new ModelAndView("createFixedSpace", )
+        List<Space> allFixedSpc = spaceFixedRepository.findByFixed(true);
+
+        model.addAttribute("allFixedSpc", allFixedSpc);
+
+        return new ModelAndView("deleteFixedSpace", "space", new Space());
     }
 
     @RequestMapping(value = "/newS", method=RequestMethod.GET)

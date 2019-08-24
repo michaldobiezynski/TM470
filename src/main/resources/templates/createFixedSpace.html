@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="main.css" th:href="@{css/main.css}"/>
+    <link rel="stylesheet" href="main.css" th:href="@{/css/main.css}"/>
 </head>
 <body>
 
@@ -22,18 +22,18 @@
 
 <p id="title">WoodMac Parking</p>
 
-<form action="/bookings/deleteFixed" method="POST" th:object="${booking}">
+<form action="/spaces/newFixed" method="POST" th:object="${booking}">
     <div class="Box">
 
 
         <div class="fieldSection2">
-            <h2 id="cb">Create a booking</h2>
+            <h2 id="cb">Create a fixed space</h2>
             <br>
             <br>
-            <p id="bookingExistMsg" th:text="${message}"></p>
+            <p id="fixedSpaceMsg" th:text="${message}"></p>
             <br>
             <p>Which space?</p>
-            <select id="bookingSpace" name="bookingSpace" th:field="${booking.space}">
+            <select id="fixedSpace" name="fixedSpace" th:field="${space.id}">
                 <option value=0 selected="selected" >Free space</option>
                 <option th:each="space : ${allFreeSpc}" th:text="${space.id}"
                         th:value="${space.id}" value="XXX">space</option>
@@ -41,6 +41,11 @@
             <br>
             <br>
             </p>
+            <select id="fixedSpaceUSer" name="fixedSpaceUSer" th:field="${space.userId}">
+                <option th:value="${id}" selected="selected" >User</option>
+                <option th:text="${id}"
+                        th:value="${id}" value="XXX">space</option>
+            </select>
             <br>
             <br>
             <input type="submit" value="Submit" class="button2" />
@@ -58,6 +63,9 @@
     <br />
     Copright &copy; - Michal Dobiezynski   2019
 </p>
+<script>
+    document.getElementById("fixedSpaceUSer").style.display = "none";
+</script>
 </body>
 
 </html>

@@ -75,4 +75,75 @@ public class SpaceController {
         return existingSpace;
     }
 
+    @RequestMapping(value = "/newFixed", method = RequestMethod.POST)
+    public ModelAndView createFixedSpace(@ModelAttribute Space space,
+                                         RedirectAttributes redirectAttributes) {
+
+        if(space.getId() != 0) {
+
+            space.setBooked(true);
+
+            space.setFixed(true);
+
+            spaceRepository.saveAndFlush(space);
+
+            List<Space> allFreeSpc = spaceBookedRepository.findByBooked(false);
+
+            redirectAttributes.addFlashAttribute("allAcc", allFreeSpc);
+
+            redirectAttributes.addFlashAttribute("message", "Fixed space successfully created.");
+
+            return new ModelAndView("redirect:/admin/newFixedSpace", "space", new Space());
+
+        }
+        else {
+
+            List<Space> allFreeSpc = spaceBookedRepository.findByBooked(false);
+
+            redirectAttributes.addFlashAttribute("allAcc", allFreeSpc);
+
+            redirectAttributes.addFlashAttribute("message", "You have not selected a space.");
+
+            return new ModelAndView("redirect:/admin/newFixedSpace", "space", new Space());
+        }
+
+
+    }
+
+    @RequestMapping(value = "/deleteFixed", method = RequestMethod.POST)
+    public ModelAndView deleteFixedSpace(@ModelAttribute Space space,
+                                         RedirectAttributes redirectAttributes) {
+
+
+        if(space.getId() != 0) {
+
+            space.setBooked(false);
+
+            space.setFixed(false);
+
+            spaceRepository.saveAndFlush(space);
+
+            List<Space> allFreeSpc = spaceBookedRepository.findByBooked(false);
+
+            redirectAttributes.addFlashAttribute("allAcc", allFreeSpc);
+
+            redirectAttributes.addFlashAttribute("message", "Fixed space successfully removed.");
+
+            return new ModelAndView("redirect:/admin/deleteFixedSpace", "space", new Space());
+
+        }
+        else {
+
+            List<Space> allFreeSpc = spaceBookedRepository.findByBooked(false);
+
+            redirectAttributes.addFlashAttribute("allAcc", allFreeSpc);
+
+            redirectAttributes.addFlashAttribute("message", "You have not selected a space.");
+
+            return new ModelAndView("redirect:/admin/deleteFixedSpace", "space", new Space());
+        }
+
+    }
+
+
 }
